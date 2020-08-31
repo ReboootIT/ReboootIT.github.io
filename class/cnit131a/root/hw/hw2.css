@@ -1,0 +1,32 @@
+
+
+
+book,
+title,
+author
+{
+display: block;
+}
+
+bookcatalog
+{
+background-color: #D3D3D3;
+}
+
+title
+{
+font-weight: bold;
+color: red;
+}
+
+
+
+book:nth-child(odd) 
+{
+background: #add8e6;
+}
+
+book:nth-child(even) 
+{
+background: white;
+}
