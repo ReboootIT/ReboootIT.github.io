@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Part 2">
+
+<title>Hw2 - Part2</title>
+
+<script>
+
+
+function process()
+
+  { 
+
+     //declare variables
+
+      var number1, number2, number3,
+             n1, n2, n3;
+
+     //Assigning ID
+
+    number1 = document.forms["myform"].elements["num1"].value;
+    number2 = document.forms["myform"].elements["num2"].value;
+    number3 = document.forms["myform"].elements["num3"].value;
+     
+ 
+
+     //convert numbers from strings to integers for arithmetic
+
+         n1 = parseInt(number1);
+         n2 = parseInt(number2);
+         n3 = parseInt(number3);
+         
+         
+         //check to see if input are real numbers
+     if (isNaN(n1) || isNaN(n2) || isNaN(n3) ) {
+        alert("Please enter integers only!!");}
+
+          //Using array to perform mathematical operations 
+    var nums = [n1, n2, n3];
+    var total = 0;  
+    for(var i = 0; i < nums.length; i++) {total += nums[i];}
+    var avg = total / nums.length;
+    var maxx = Math.max.apply(Math, nums)
+    var minn = Math.min.apply(Math, nums)
+
+    // Product of number using non array method as it is simple 
+    product = n1 * n2 * n3;
+
+
+    
+        document.forms["myform"].elements["result"].value = ("The inputted numbers were " + n1 + ", " + n2 + ", " +  n3 + 
+"\nSmallest number " +  minn + 
+"\nLargest number " + maxx + 
+"\nThe Total " + total + 
+"\nThe Average " + avg +
+"\nThe Product " + product 
+)
+
+}
+
+</script>
+
+
+<style>
+
+body {background-color: #f5f5dc;}
+
+.body { width: 550px;
+     margin: 0px auto;  
+    
+}
+
+input {text-align: right;}
+
+
+</style>
+
+</head>
+
+<body>
+
+<a href="javascript:history.back()">Go Back</a> <br> <br>
+
+<section class="main">
+<h2> HW #2  Part-2 </h2>
+
+<p style="font: bold 14px 'comic sans ms'; text-align: justify;  width: 500px;">
+Script that displays the sum, average, and product of the three integers, and the smallest and largest of the three integers.
+</p>
+
+<br>
+
+
+<form id="myform" name="myform">
+
+<table>
+<tr>
+
+<td>First Number:</td> 
+<td><input type="number/text" id="num1" autofocus></td>
+
+<td>Second Number:</td> 
+<td><input type="number/text" id="num2"></td>
+
+
+<td>Third Number:</td>  
+<td><input type="number/text" id="num3"></td>
+
+
+</tr>
+</table>
+
+<br>
+
+Results: <textarea rows="6" cols="40" id="result" readonly></textarea><br><br>
+
+<input type="button" onclick="process()" value="SUBMIT">
+
+<input type="reset" value="RESET"><br><br>
+
+
+</form>
+
+</section>
+
+</body>
+</html>
