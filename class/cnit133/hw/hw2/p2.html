@@ -9,6 +9,24 @@
 
 <title>Hw2 - Part2</title>
 
+</script>
+
+<!-- the following uses jquery to hide the instructions of the problem -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+<script>
+
+
+$(document).ready(function(){
+  $("button").click(function(){
+    $("textarea").fadeTo("slow",0.05);
+  });
+});
+
+
+</script>
+
 <script>
 
 
@@ -125,6 +143,8 @@ Results: <textarea rows="6" cols="40" id="result" readonly></textarea><br><br>
 
 
 </form>
+
+<button type="button">Click to fade results</button>
 
 </section>
 
