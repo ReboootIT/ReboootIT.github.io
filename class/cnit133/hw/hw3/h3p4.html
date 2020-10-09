@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="Part 4">
+
+<title>Hw3 - Part 4 Math Quiz</title>			
+<script>
+
+		var number1;
+		var number2;
+	
+	function checkResult()
+{
+	var product =parseInt(document.getElementById("product").value);
+	if (product == number1 * number2)
+  {
+	document.getElementById("product").value = "";
+	document.getElementById("result").innerHTML  = "<font color='blue'>Very good! (<b>" + number1 + "</b> * <b>" + number2 + "</b> = <b>" + product + "</b>)</font>";
+	doCalculation();
+  }    
+	else
+	document.getElementById("result").innerHTML  = "<font color='red'>No. Please try again.</font>";		                    
+}
+          
+
+  function doCalculation()
+{ 
+	number1 = Math.floor((Math.random()*10));
+	number2 = Math.floor((Math.random()*10));
+	document.getElementById("question").innerHTML  = "How much is <b>" + number1 + "</b> times <b>" + number2 + "</b>?";
+	document.getElementById("product").focus();
+}
+
+function init()
+{
+doCalculation();
+}
+		
+</script>
+
+			
+</head>
+<body onload="init();">
+
+<a href="javascript:history.back()">Go Back</a> <br> <br>
+
+<h1> HW #23  Part-4 Math Quiz</h1>
+
+<br>
+  <h2> Welcome to the program to learn multiplication</h2>
+  <hr>
+  <p>
+    <label id="question"> </label><br/>
+    <input type="text" id="product"><button onclick="checkResult()">Check</button>
+	<label id="result"> </label>
+  </p>
+</body>
+</html>

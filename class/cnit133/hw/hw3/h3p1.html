@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="exercise using function and switch statement">
+<title>Student Grades: HW3-Part 1</title>
+
+<style>
+/* CSS for tooltip */
+label {
+display: inline-block;
+width: 5em;
+}
+    
+.body { width: 415px; margin: 0px auto; background-color: #f5f5dc; padding: 15px;}
+
+</style>
+
+<script>
+function process() {
+
+//Declare variables
+
+var hw, fe, me, pt, hwP, feP, meP, ptP, final_avg, fin_grade;
+
+var errMsg1="<span style='font-weight: bold; color: red; font-size: 20px;'>Invalid HW Avg or Final Exam</span>";
+var errMsg2="<span style='font-weight: bold; color: red; font-size: 20px;'>Invalid GPA</span>";
+
+
+
+
+
+hw = document.getElementById("hwavg").value;
+
+
+fe = document.getElementById("fexam").value;
+
+
+me = document.getElementById("mexam").value;
+
+
+pt = document.getElementById("parti").value;
+
+
+// Validate input - if not then alert error msg...else proceed
+
+if ( isNaN(hw) || isNaN(fe) || isNaN(me) || isNaN(pt)  || hw=="" || fe==""|| hw > 100 || hw < 0 || fe < 0 || fe > 100 || me > 100 || me < 0 || pt < 0 || pt > 100 )
+    {
+     document.getElementById("errOut").innerHTML = errMsg1;
+    }
+
+else {
+//Convert input string to numeric 
+     
+     hwP = parseInt( hw );
+     feP = parseInt( fe );
+     meP = parseInt( me );
+     ptP = parseInt( pt );
+//Calculate final average
+     final_avg = (.5 * hwP) + (.2 * feP) + (.2 * meP) + (.1 * ptP);
+
+//Note: you must use true in switch satement..then case ranges for final_avg will work
+
+     switch(true) {
+
+       case (final_avg >= 90):
+          document.getElementById("results").innerHTML = ("The final average is " + Math.round( final_avg ) +  
+"<br>The final grade is A<br>Excellent work!")
+          break;
+
+       case (final_avg >= 80):
+          document.getElementById("results").innerHTML = ("The final average is " + Math.round( final_avg ) +  
+"<br>The final grade is B<br>Good work!")
+          break;
+
+       case (final_avg >= 70):
+          document.getElementById("results").innerHTML = ("The final average is " + Math.round( final_avg ) +  
+"<br>The final grade is C<br>Average work!") 
+          break;
+
+       case (final_avg >= 60):
+          document.getElementById("results").innerHTML = ("The final average is " + Math.round( final_avg ) +  
+"<br>The final grade is D<br>Poor work!<br>You must re-take the course")
+          break;
+
+       default:
+          document.getElementById("results").innerHTML = ("The final average is " + Math.round( final_avg ) +  
+"<br>The final grade is F\nFailing work!<br>You must re-take the course")
+
+//end switch logic  
+    }
+
+//end else logic
+ } 
+
+//end function
+}
+
+
+function res()
+{
+document.getElementById("results").innerHTML = "";
+document.getElementById("errOut").innerHTML = "";
+}
+
+</script>
+
+</head>
+ 
+<body>
+
+<section class="body">
+
+<h3>Student Grades</h3>
+
+<form name="myform">
+
+<table>
+<tr>
+<td>Homework Average: </td><td><input type="text" id="hwavg" size="4"></td>
+</tr>
+
+<tr>
+<td>Final Exam: </td>
+<td><input type="text" id="fexam" size="4"></td>
+</tr>
+
+<tr>
+<td>Mid Exam: </td><td><input type="text" id="mexam" size="4"></td>
+</tr>
+
+<tr>
+<td>Participation: </td>
+<td><input type="text" id="parti" size="4" onkeyup="process();"></td>
+</tr>
+
+
+</table>
+<br>
+
+<div id ="errOut"></div> 
+<br>
+<span style="color: blue; font-size: 20px;">Summary of Final Grade:</span> <div id="results"></div>
+<br><br>
+
+
+<input type="reset" value="RESET" onclick="res()"><br><br>
+
+</form>
+</section>
+
+</body>
+</html>

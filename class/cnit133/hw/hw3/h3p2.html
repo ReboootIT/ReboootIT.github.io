@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta name="description" content="HW3 Part 2">
+
+<title>Sales Commision HW3-Part2</title>
+
+<!-- the tags to bring jQuery UI CSS file, jQuery .js file, and jQuery UI .js file -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+<script>
+/*jQuery code for tooltip  */
+$(function() {
+$( document ).tooltip();
+});
+</script>
+
+
+<script>
+
+//Declare and initialize all variables
+
+// Number of items for text area
+var num_item1;
+var num_item2;
+var num_item3;
+var num_item4;
+
+
+var price1 = 239.99;
+var price2 = 129.75;
+var price3 = 99.95;
+var price4 = 350.89;
+
+
+// Number of items 
+var int_item1;
+var int_item2;
+var int_item3;
+var int_item4;
+
+// total is itemsold * price
+var total_item1;
+var total_item2;
+var total_item3;
+var total_item4;
+
+var comm;
+var earnings;
+
+//As the user enters a value in the item fields check if the number of items entered by the user is less than zero
+function checkNumItems(){
+    if(document.getElementById('item1').value < 0 || document.getElementById('item2').value < 0 || document.getElementById('item3').value < 0 || document.getElementById('item4').value < 0){
+        //Display an error message if either one of the items is less than zero
+        document.getElementById('msg').innerHTML = "Error: Values cannot be less than 0";
+        //Disable the submit button if either one of the items is less than zero
+        document.getElementById("submitBtn").disabled = true;
+    }
+    else
+    {
+        //Remove (or do not display) an error message if all items are more than 0
+        document.getElementById('msg').innerHTML = "";
+        //Enable submit button if all items are greater than zero
+        document.getElementById("submitBtn").disabled = false;
+}   }
+
+//Function used to calculate  and fill in all fields when the user press Submit
+function calculate(){
+    //Get the values the user entered 
+    num_item1 = document.getElementById('item1').value;
+    num_item2 = document.getElementById('item2').value;
+    num_item3 = document.getElementById('item3').value;
+    num_item4 = document.getElementById('item4').value;     
+
+    //Set the values into the fields of the column 'Number Sold'
+    document.getElementById('int_item1').value = num_item1;
+    document.getElementById('int_item2').value = num_item2;
+    document.getElementById('int_item3').value = num_item3;
+    document.getElementById('int_item4').value = num_item4;
+
+    //Calculate the total for each item
+    total_item1 = num_item1 * price1;
+    total_item2 = num_item2 * price2;
+    total_item3 = num_item3 * price3;
+    total_item4 = num_item4 * price4;
+
+    //Set the total for each fields of the 'Total' column
+    document.getElementById('total_item1').value = total_item1;
+    document.getElementById('total_item2').value = total_item2;
+    document.getElementById('total_item3').value = total_item3;
+    document.getElementById('total_item4').value = total_item4; 
+
+    //Calculate the 'Total Amount Sold' field
+    amountSold = total_item1 + total_item2 + total_item3 + total_item4;
+
+    //Set (fill in) the 'Total Amount Sold' field
+    document.getElementById('final_total').value = amountSold;
+
+    //Calculate the commission
+    comm = Math.floor(amountSold*.09);
+
+    //Caclulate the earnings
+    earnings = amountSold + comm + 200;
+
+    //Set the 'Total Weekly Earnings' field
+    document.getElementById('salary').value = earnings;
+
+}
+
+//Function used to Reset the fields the salesperson enters when they press Reset
+function reset(){
+    document.getElementById('item1').value = "";
+    document.getElementById('item2').value = "";
+    document.getElementById('item3').value = "";
+    document.getElementById('item4').value = ""; 
+}
+</script>
+     
+ </head>
+
+<body>
+<h1>Sales Commission Calculator</h1>
+
+    <section>
+
+    <form name="salesperson_total">
+
+    <p><label for="sp">Salesperson: </label><input id="sp" name="sp" 
+title="Please make sure that the salesperson's name is spelled correctly"></p>
+    <br>
+
+    <h3>Input the number of items sold for each item number:</h3>
+
+    Item 1: <input class="t" type="text" name="num_item1" id="item1" size="8"  style="text-align:right;" onkeyup="checkNumItems();"><br>
+    Item 2: <input class="t" type="text" name="num_item2" id="item2" size="8"  style="text-align:right;" onkeyup="checkNumItems();"><br>
+    Item 3: <input class="t" type="text" name="num_item3" id="item3" size="8"  style="text-align:right;" onkeyup="checkNumItems();"><br>
+    Item 4: <input class="t" type="text" name="num_item4" id="item4" size="8"  style="text-align:right;" onkeyup="checkNumItems();"><br>
+    <span id="msg" style="color:red;"></span><br><br> <!--This element is used to display an error message if any item entered is less than zero-->
+    <input type="button" value="Submit" id="submitBtn" onclick="calculate()">
+    <input type="reset" value="Reset" onclick="reset()"><br><br>
+
+<table>
+<tr>
+    <th>Item #</th>
+    <th>Price</th>
+    <th>Number Sold</th>
+    <th>Total</th>
+</tr>
+
+<tr>
+    <td>1</td>
+    <td>$239.99</td>
+    <td><input type="text" class="t" name="int_item1" id="int_item1" style="text-align:right;"></td>
+    <td><input type="text"  class="t" name="total_item1" id="total_item1" style="text-align:right;"></td>
+</tr>
+<tr>
+    <td>2</td>
+    <td>$129.75</td>
+    <td><input type="text" class="t" name="int_item2" id="int_item2" style="text-align:right;"></td>
+    <td><input type="text"  class="t" name="total_item2" id="total_item2" style="text-align:right;"></td>
+</tr>
+<tr>
+    <td>3</td>
+    <td>$99.95</td>
+    <td><input type="text" class="t" name="int_item3" id="int_item3" style="text-align:right;"></td>
+    <td><input type="text"  class="t" name="total_item3" id="total_item3" style="text-align:right;"></td>
+</tr>
+<tr>
+    <td>4</td>
+    <td>$350.89</td>
+    <td><input type="text" class="t" name="int_item4" id="int_item4" style="text-align:right;"></td>
+    <td><input type="text" class="t" name="total_item4" id="total_item4" style="text-align:right;"></td>
+</tr>
+<tr>
+    <td colspan="3">Total Amount Sold:</td>
+    <td><input type="text" class="t" name="final_total" id="final_total" style="text-align:right;"></td>
+</tr>
+<tr>
+    <td colspan="3">Total Weekly Earnings:</td>
+    <td><input type="text"  class="t" name="salary" id="salary" style="text-align:right;"></td>
+</tr>
+</table>
+
+</form>
+</section>
+
+</body>
+</html>
