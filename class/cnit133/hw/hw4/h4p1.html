@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="exercise using while statement">
+<title>HW4 - Part 1 A and B </title>
+
+
+
+
+<!-- Jquery Script -->
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+<!-- Internal CSS Script -->
+
+<style>
+ body {background-color:#f5f5dc;
+ width: 415px; margin: 0px auto;}
+
+ #mars { padding-left: 100px;}
+
+ #draggable { width: 600px; background-color:skyblue; border: 1px solid red; padding:5px; }
+
+ #partA, #partB {
+  css declarations;
+} 
+
+</style>
+    
+</head>
+
+<!-- END OF HEAD TAG  -->
+
+<body>
+	<section>
+	
+
+<br><br>
+
+<h1>Calculations using While and for loop</h1>
+
+<h2>Part A - Using For loop</h2>
+<p id="partA"></p>
+
+<div id="draggable">
+<h2>Part B - Using While loop - This element is draggable</h2>
+<p id="partB"></p>
+<div>
+
+
+
+</section>
+
+<script>
+
+
+//Part A
+		var sumA = 0;
+		var productA = 1;
+		for (var i=5; i<22; i+=4)
+		{
+			sumA += i;  
+			productA *= i;
+
+		}
+
+//Part B 
+
+         var productB, sumB, x;
+          productB = 1;
+          x = 1;
+          y=0; 
+          sumB = 0;	
+          
+          //for product
+          do {
+	      productB *= x;
+	      x = x + 3;   
+           } while   (x <= 21 ); 
+
+          // For SUM  
+          do {
+	      sumB += y;
+	      
+	      y = y + 3;   
+           } while   (y <= 21 ); 
+
+
+
+//var y = 0;
+//var sumB = 0;
+//var productB = 1; 
+
+//while   (y <= 21 )
+//{
+ //       productB *= y;
+ //       sumB += y;
+  //      y = y + 3;      
+//}
+document.getElementById("partA").innerHTML = ("<br>The sum of  5,9,13,17,21 is equal to " + sumA + " and product is " + productA);
+
+document.getElementById("partB").innerHTML = ("<br>The sum of 3,6,9,12,15,18,21 is equal to " + sumB + " and product is " + productB);
+
+</script>
+
+<script>  <!-- using jQuery UI draggable again -->
+ $(function() {
+   $( "#draggable" ).draggable();
+ });
+ </script>
+
+</body>
+</html>

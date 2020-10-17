@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="HW4 - Part 2 using loop to calculate Compound interest and multiple tables">
+<title>Compund interest amount - using loops</title>
+<style>
+table {
+  width: 300px;
+  border-collapse: collapse;
+  margin:50px;
+  float: left;
+  background-color: lightblue; 
+  }
+table, td, th { 
+  border: 1px solid black;
+  padding: 4px; 
+  }
+th {
+  text-align: left;
+  color: white;
+  background-color: darkblue; 
+  }
+tr:nth-child(even){background-color: white;}
+caption {font-size: 2em;}
+}
+</style>
+
+<script>
+var amount; // Current amount of money
+var principal = 1000.0; // Principal amount
+ 	
+for ( var rate = 5; rate <= 7; rate++ )
+  {
+  // Begin table and table header
+  document.writeln( "<table>"); 
+ 
+  // table heads
+  document.writeln( "<thead> <tr><th>Year</th><th>Amount on Deposit</th><th>Interest Rate</th></tr></thead>" );
+	// Begin table body
+	
+  document.writeln( "<tbody>" );			
+	
+  // Calculate amount for 10 years of deposit     at current rate
+    for ( var year = 1; year <= 10; ++year )
+      {
+        //formula
+        amount = principal * Math.pow( (1 + (rate/100)), year );
+        // rows
+        document.writeln( "<tr><td>" + year + "</td><td>" + amount.toFixed(2) + "</td><td>" + (rate/100) + "</td></tr>" );   
+        
+      // End for loop
+      }
+      // end of table
+   document.writeln( "</tbody></table>" );
+  } // End for loop
+</script>
+
+
+</head>
+</html>
