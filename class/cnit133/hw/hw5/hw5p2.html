@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="pulldown menu that can be used as navigation">
+<title>Assgn 5 part 2 - Pulldown Menu with onchange and on click event handler</title>
+
+<script>
+function goToNewPage(myForm) {
+    var myDestination = myForm.destinationList.options[myForm.destinationList.selectedIndex].value;
+    window.location = myDestination;
+}
+</script>
+
+<style>
+body { width:500px;
+       margin: 0px auto; padding: 15px;
+       text-align: left; /* Counteract to IE/Win Hack */	
+       background-color:#f5f5dc
+      }    
+
+      #form_onChange, #form_onClick {background-color: #f5dcdc;}
+</style>
+
+</head>
+
+<body>
+<div id="form_onChange" >	
+<form >	
+<h3>Choose your destination (using onChange event handler)</h3>
+<select name="destinationList" onChange="goToNewPage(this.form);">
+<option>Choose Destination:</option>
+<option value="https://reboootit.github.io/class/cnit133/index.html">Main page HW 1- CNIT 133</option>
+<option value="https://reboootit.github.io/class/cnit133/hw/hw2.html">HW 2</option>
+<option value="https://reboootit.github.io/class/cnit133/hw/hw3.html">Hw 3</option>
+<option value="https://reboootit.github.io/class/cnit133/hw/hw4.html">Hw 4</option>
+</select>
+</form>
+</div>
+
+<br><br>
+
+
+<div>
+<form id="form_onClick">
+	<h3>Choose your destination (using onClick event handler)</h3>
+<select name="destinationList">
+<option value="https://reboootit.github.io/class/cnit133/index.html">Main page HW 1- CNIT 133</option>
+<option value="https://reboootit.github.io/class/cnit133/hw/hw2.html">HW 2</option>
+<option value="https://reboootit.github.io/class/cnit133/hw/hw3.html">Hw 3</option>
+<option value="https://reboootit.github.io/class/cnit133/hw/hw4.html">Hw 4</option>
+</select>
+<input type="button" value="Go" onClick="goToNewPage(this.form);">
+</form>
+</div>
+</body>
+</html>

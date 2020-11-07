@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Form Validation HW 5 part 1">
+<title>Form validation Assgn 5 part 1</title>
+
+<style>
+body {
+	margin:50px 0px; padding:0px;
+	text-align:center;
+        background-color:#f5f5dc;
+	}
+
+.body {
+	width:450px;
+	margin: 0px auto;
+	text-align:left;
+	padding:10px;
+	
+	}
+
+table {background-color: #f5dcdc;}
+
+    
+
+
+
+#msgname, #msggender, #msgage, #msghobbies {color: blue;}
+</style>
+
+<script type="text/javascript">
+
+<!--
+
+function validate_form ( )
+{
+	
+	 var msgname = "Enter a name";
+     var msgage = "Enter a valid age";
+     var msgemail = "Enter a valid email";
+     var msgcountry = "Please select your country";
+     var msggender = "Please check your gender";
+     var msghobbies = "Please select atleast one hobby";
+	 valid = true;
+
+        if ( document.contact_form.name.value == "" )
+        {
+                document.getElementById("msgname").innerHTML = msgname;
+                valid = false;
+        }
+
+        if ( ( document.contact_form.gender[0].checked == false ) && ( document.contact_form.gender[1].checked == false ) && ( document.contact_form.gender[2].checked == false ))
+        {
+                document.getElementById("msggender").innerHTML = msggender;
+                valid = false;
+        }
+
+        if ( document.contact_form.age.selectedIndex == 0 )
+        {
+                document.getElementById("msgage").innerHTML = msgage;
+                valid = false;
+        }
+
+        if ( (document.contact_form.hobbies[0].checked == false ) && ( document.contact_form.hobbies[1].checked == false ) && ( document.contact_form.hobbies[2].checked == false )  )
+        {
+                document.getElementById("msghobbies").innerHTML = msghobbies;
+                valid = false;
+        }
+
+
+
+        return valid;
+}
+
+
+//-->
+function res()
+{
+document.getElementById("msgname").innerHTML = " ";
+document.getElementById("msgage").innerHTML = " ";
+document.getElementById("msghobbies").innerHTML = " ";
+document.getElementById("msggender").innerHTML = " ";
+}
+
+</script>
+
+</head>
+
+<body onload="document.contact_form.name.focus();">
+<section class="body">
+
+
+
+
+<table>
+<tr>
+<td>
+ 
+<form name="contact_form" method="post"  action="formOK.html" onSubmit="return validate_form ( );">
+  <table>
+  <tr>
+  <td>Name:</td> 
+  <td><input type="text" name="name" size="30">
+  <div id="msgname"></div>  
+  </td>
+  </tr>
+
+  
+  <tr>
+  <td>Gender:</td> 
+  <td>
+  <label><input type="radio"  name="gender"  value="male"> Male</label>
+  <label><input type="radio"  name="gender"  value="female"> Female</label>
+  <label><input type="radio"  name="gender"  value="Trans"> Trans</label>
+  <div id="msggender"></div>
+  
+  </td>
+  </tr>
+
+<tr>
+  <td><label>Age:</label></td> 
+  <td>
+  <div>
+<select name="age">
+	<option value="">Please Select an Option:</option>
+	<option value="0-18 years">0-18 years</option>
+	<option value="18-30 years">18-30 years</option>
+	<option value="30-45 years">30-45 years</option>
+	<option value="45-60 years">45-60 years</option>
+	<option value="60+ years">60+ years</option>
+</select>
+    </div>
+  <div id="msgage"></div> 
+  </td>
+  
+  </tr>
+
+
+  <td>Hobbies:</td> 
+  <td>
+    <label><input type="checkbox"  name="hobbies"  value="sports"> Sports</label>
+    <label><input type="checkbox"  name="hobbies"  value="movies"> Movies</label>
+    <label><input type="checkbox"  name="hobbies"  value="music"> Music</label><div id="msghobbies"></div>
+    
+    </td>
+  </tr>  
+
+  <tr>
+  <td><input type="submit" name="send" value="Send Details"></td>
+  <td><input type="reset" value="RESET" onclick="window.location.reload();"></td>
+  <td><input type="reset" value="clear msgs" onclick="res();"></td>
+ 
+  </tr>
+
+  </table>
+  </form>
+</td>
+</tr>
+</table>
+
+
+</section>
+</body>
+</html>

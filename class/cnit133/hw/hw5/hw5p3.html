@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Population per State">
+<title>Assgn Part 3 - Population per State</title>
+
+<style>
+body {
+        font-size: 75%;
+        background-color:#f5f5dc;
+        font-weight: bold;
+	}
+
+.body {
+       width: 400px;
+       margin: 0px auto; padding: 15px;
+       background-color: #909090;	
+       }
+
+h2 {color: white;}
+
+table
+{
+border-collapse:collapse;
+width: 270px;
+}
+
+table, td
+{
+border:1px solid yellow;
+}
+</style>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<script>
+$(function() {
+ $( "#dialog" ).dialog({
+  autoOpen: false,
+  show: {
+    effect: "blind",
+    duration: 1000
+  },
+
+  hide: {
+    effect: "explode",
+    duration: 1000
+  }
+ });
+
+ $( "#opener" ).click(function() {
+  $( "#dialog" ).dialog( "open" );
+ });
+});
+</script>
+
+<script>
+
+
+var pop = [["AL" , "Alabama " , "Montgomery" , "4,887,871"],
+          ["AK" , "Alaska " , "Juneau " , "737,438"],
+          ["AZ " , "Arizona " , "Phoenix  " , "7,171,646"],
+          ["AR" , "Arkansas " , "Little Rock " , "3,010,825"],
+          ["CA" , "California" , "Sacramento" , "39,557,045"],
+          ["CO" , "Colorado" , "Denver",  "5,694,564"]];
+
+function populateTable() {
+
+
+table = document.getElementById("table");
+
+           for(var i = 0; i < pop.length; i++)
+           {
+               // create a new row
+               var newRow = table.insertRow(table.length);
+               for(var j = 0; j < pop[i].length; j++)
+               {
+                   // create a new cell
+                   var cell = newRow.insertCell(j);
+                   
+                   // add value to the cell
+                   cell.innerHTML = pop[i][j];
+               }
+           }
+       
+// end of populate table function 
+}
+
+
+
+       
+function ButtonPressed()
+  {   
+    var searchKey = document.forms["SearchForm"].elements["inputVal"].value;  //get searchkey from form input box
+    searchKey = searchKey.toUpperCase();     //change search key to upper case
+    
+    var found = false;
+    for (var row = 0; row < pop.length; row++) //loop for 4 rows
+     {
+     if ((pop[row][0] == searchKey) || (pop[row][1] == searchKey))
+
+                 //check if search key = 1st or 2nd element of each row
+     { 
+
+                //if search key = 1st or 2nd element of a particular row
+                //then place in input boxes for price and comment, that is, the 3rd and 4th elements
+
+       var SA = document.forms["SearchForm"].elements["sAb"].value;
+       var SN = document.forms["SearchForm"].elements["sName"].value;
+       var cap = document.forms["SearchForm"].elements["capital"].value;
+       var P = document.forms["SearchForm"].elements["population"].value;
+
+       document.forms["SearchForm"].elements["sAb"].value = pop[row][0];
+       document.forms["SearchForm"].elements["sName"].value = pop[row][1];
+       document.forms["SearchForm"].elements["capital"].value = pop[row][2];
+       document.forms["SearchForm"].elements["population"].value = pop[row][3]; 
+
+       row = pop.length;   //ends loop if match found
+       found = true;
+      
+   
+     }
+    }
+
+
+
+  if ( found == false ) {
+    document.getElementById("error").innerHTML = "State not found!";
+   //document.forms["SearchForm"].elements["error"].value= "State not found!"; 
+       }
+
+
+
+
+  }
+</script>
+
+
+</head>
+
+<body onload="Javascript:populateTable()">
+
+<section class="body">
+
+
+
+<h2>Population info chart</h2>
+
+<button id="opener">Click for Complete list</button>
+
+<div id="dialog" title="Instructions">
+<p>Enter an State abbreviation or name (lower or upper case is ok) in the field next to the
+State Info button</p>
+
+<table id="table" border="1">
+
+  <tr>
+    <th>State Abbr</th>
+    <th>State Name</th>
+    <th>Capital</th>
+    <th>Population</th>
+  </tr>
+ </table>
+
+</div>
+<br><br>
+
+<!-- table deleted from here --> 
+
+
+
+
+
+<br>
+
+<form name="SearchForm">
+<input type="text" size="15" name="inputVal" autofocus> 
+<input onclick="ButtonPressed();" type="button" value="State Info" name="search" id="search">
+
+<br><br>
+
+Thanks for your inquiry, here is the information you requested:
+
+<br><br>
+
+State abbr: <br>
+
+<input type="text" size="6" name="sAb" id="sAb"><br>
+
+State Name: <br>
+<input type="text" size="6" name="sName" id="sName"><br>
+
+Capital: <br>
+<input type="text" size="6" name="capital" id="capital"><br>
+
+Population: <br>
+<input type="text" size="6" name="population" id="population"><br><br>
+
+
+
+<input type="reset" value="Reset" onclick="location.reload();">
+</form>
+
+<br>
+<div id="error"></div>
+<br>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
