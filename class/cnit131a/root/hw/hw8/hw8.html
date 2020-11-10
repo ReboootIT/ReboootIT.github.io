@@ -1,0 +1,253 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>CNIT 131A Assignment#8 - Xquery and XQiB</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="AbdulRashid(Abdul) Khan">
+
+<style>
+
+
+textarea.a{border: ridge 2px;
+    padding: 5px;
+    width: 50em;
+    min-height: 40em;
+    overflow: auto;
+}
+textarea.b, textarea.c {border: ridge 2px;
+    padding: 5px;
+    width: 20em;
+    min-height: 15em;
+    overflow: auto;
+}
+span.bold{
+  font-size: 20px;
+  font-weight: 700;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th{
+  text-align: center;
+}
+td {
+  padding: 5px;
+  text-align: left;    
+}
+
+h2{
+  font-size: 2em;
+}
+
+h1{
+  font-size: 2.5em;
+}
+</style>
+</head>
+<body>
+
+
+
+
+<h1>XQuery and XQiB(Xquery in Browser)</h1>
+
+<h2>What is XQuery? </h2>
+
+<p>XQuery is a functional query language used to retrieve information stored in XML format. It is same as for XML what SQL is for databases. It was designed to query XML data</p>
+
+<p>XQuery is built on XPath expressions. It is a W3C recommendation which is supported by all major databases.</p>
+
+<p class="definition">The as it is definition of XQuery given by its official documentation is as follows:"XQuery is a standardized language for combining documents, databases, Web pages and almost anything else. It is very widely implemented. It is powerful and easy to learn. XQuery is replacing proprietary middleware languages and Web Application development languages. XQuery is replacing complex Java or C++ programs with a few lines of code. XQuery is simpler to work with and easier to maintain than many other alternatives."</p>
+
+
+<h2>Usage and advantages</h2>
+
+<p>XQuery is a functional query language used to retrieve information stored in XML format. It is same as for XML what SQL is for databases. It was designed to query XML data</p>
+
+<h3>Main characteristic of XQuery: </h3>
+
+<ul>XQuery can be used to retrieve both hierarchal and tabular data.</ul>
+<ul>XQuery can also be used to query tree and graphical structures. </ul>
+<ul>XQuery can used to build web pages.</ul>
+<ul>XQuery can be used to query web pages.</ul>
+<ul>XQuery is best for XML-based databases and object-based databases. Object databases are much more flexible and powerful than purely tabular databases.</ul>
+<ul>XQuery can be used to transform XML documents into XHTML documents.</ul>
+
+<br><br>
+
+
+<p> <span class="bold" >Note:</span> XQuery is a super-set of XPath. That is, any valid XPath expression is also a valid XQuery expression. Hence, there is no need to embed XPath into XQuery in the way it is done for JavaScript. Like XPath 2.0, XQuery uses an extended XML Data Model. The XQuery 1.0 and XPath 2.0 Data Model. XQuery is strongly typed, yet Flexible because data can be typed as \untyped". In particular, XQuery can na-
+tively process (untyped) Web pages.</p>
+
+
+<h3>Comparision with Xpath and XSLT: </h3>
+
+<table style="width:100%">
+  <tr>
+    <th colspan="2">Compared to Xpath</th>
+    <th colspan="2">Compared to XSLT</th>
+  </tr>
+  <tr>
+    <td>XQuery is a functional programming and query language that is used to query a group of XML data.</td>
+    <td>XPath is a xml path language that is used to select nodes from an xml document using queries. </td>
+    <td>XQuery is program driven and declarative</td>
+    <td>XSLT is document-driven and funtional</td>
+    
+  </tr>
+
+  <tr>
+    <td>XQuery is used to extract and manipulate data from either xml documents or relational databases and ms office documents that support an xml data source.</td>
+    <td>XPath is used to compute values like strings, numbers and boolean types from another xml documents.</td>
+    <td>XQuery is used only for simple transformations and its not as much powerful and sophisticated as XSLT</td>
+    <td>XSLT is a language that was especially designed to process tree structures and much powerful at retrieving result</td>
+    
+  </tr>
+
+  <tr>
+    <td>Xquery is represented in the form of a tree model with seven nodes, namely processing instructions, elements, document nodes, attributes, namespaces, text nodes, and comments. </td>
+    <td>Xpath is represented as tree structure, navigate it by selecting different nodes.</td>
+    <td>XQuery is designed for retrieving and interpreting information according to the specification. It is very flexible to query a broad spectrum of XML information sources, like XML databases and XML documents</td>
+    <td>XSLT is mainly designed for transforming the XML documents</td>
+    
+    
+  </tr>
+
+  <tr>
+    <td>Xquery supports xpath and extended relational models.</td>
+    <td>Xpath is still a component of query language.</td>
+    <td>XQuery is shorter, faster, easy to learn and more elegant for huge data jobs</td>
+    <td> XSLT may be difficult to learn and maintain unless you carefully designed your stylesheet</td>
+  </tr>
+
+  <tr>
+    <td>Xquery language helps to create syntax for new xml documents.</td>
+    <td>Xpath was created to define a common syntax and behavior model for xpointer and xslt.</td>
+    <td>XQuery is used only for simple transformations</td>
+    <td>XSLT is a language that was especially designed to process tree structures.</td>
+    
+  </tr>
+
+
+</table>
+
+<h2>Examples</h2>
+
+
+<h3>Comparing Xquery with SQL</h3>
+
+<p>XQuery has a broad functionality, covering simple expressions such as constants, variables, and comparisons to complex expressions for database queries, transformations, and information retrieval. For example, the FLWOR(pronounced Flower) expression corresponds to the "SELECT FROM WHERE" statement in SQL, for example:<p>
+
+
+<textarea class="b">
+for $x at $i in
+doc("bill.xml")/paymentorder/paymentorders
+let $price := $x/price
+where $x/name ftcontains "computer"
+return 
+<li>
+{$x/name}
+<eur>{data($price)}</eur>
+</li> 
+</textarea>
+
+
+<h2>Sample xml code(hw8.xml) and Xquery file (hw8.xq) :</h2>
+
+ <h3>XML Code/ hw8.xml</h3>
+<textarea class="a">
+<?xml version="1.0"?>
+<bookstore>
+   <book category="coding">
+      <title lang="en">XML is Easy</title>
+      <author>Lucy Smith</author>
+      <price>35.00</price>
+   </book>
+   <book category="children">
+      <title lang="en">Harry Potter</title>
+      <author>J K. Rowling</author>
+      <price>25.00</price>
+   </book>
+   <book category="coding">
+      <title lang="en">XQuery Kick Start</title>
+      <author>James McGovern</author>
+      <author>Per Bothner</author>
+      <author>Kurt Cagle</author>
+      <author>James Linn</author>
+      <author>Vaidyanathan Nagarajan</author>
+      <price>48.99</price>
+   </book>
+   <book category="coding">
+      <title lang="en">Learning HTML</title>
+      <author>Erik Johnson</author>
+      <price>42.00</price>
+    </book>
+   <book category="children">
+      <title lang="en">The Snowy Days</title>
+      <author>Ezra Keats</author>
+      <price>5.89</price>
+    </book>
+</bookstore>
+</textarea>	
+
+ <h3>Xquery file (hw8.xq)</h3>
+
+<textarea class="b">
+xquery version "1.0";
+
+for $b in
+   doc("hw8.xml")/bookstore/book
+   
+where 
+   $b/price < 30
+
+return $b/title
+</textarea>
+
+<p>This example finds all the titles of the books in bookstore with price lower than 30. Just like any other functional programming language, an XQuery expression is evaluated in a context. The context contains functions, namespaces, schemas, and variable bindings. For instance, the expression $b will be evaluated using the context; if the variable $x is not defned in the context, then an error is raised as part of the evaluation of this expression. Otherwise, this expression is evaluated to the value of $b as defned in the context. Likewise, function invocations are evaluated according to the defnition of the functions in the context. The XQuery recommendation already defines the "http://www.w3c.org/xquery-functions" namespace and a whole function library in this namespace (e.g., sum, distinct-values, etc.). Extending the context with new browser-specifc namespace, schema, and function defnitions is an important part of integrating XQuery into the Web browser</p>
+
+
+
+<h2>What is XQIB-XQuery-in-the-Browser?</h2>
+
+
+<p>XQIB allows you to program client-side Web applications with XQuery instead of, or as a complement to JavaScript. It works in most modern browsers (IE9, Firefox 3.6+, Chrome 8+, Safari 5) and does not require the installation of any plugin. A W3C Standard.
+
+XQuery is a W3C standard, just like HTML and XML, and is perfectly tailored for working with HTML, XML and REST. This means more elegant programs and less code. Moreover, by using an XQuery Web application server (such as MarkLogic or Sausalito) in conjunction with XQIB, having the same language on both the server and the client side allows you to reuse your code.
+
+Like JavaScript, we propose to embed XQuery scripts into HTML documents with a script tag. XQuery expressions in the browser are executed in a browser-specific context. This context contains all the namespaces and function libraries (Section 3) as well as browser specific extensions such as the predefined functions.The processing model is the following: XQuery (and Java-Script) code is executed at the beginning, thereby regis-tering events according to the DOM level 3 standard.Thus, the browser listens for these events and executes the XQuery functions (or JavaScript or VBScript code) accordingly. Currently, JavaScript is executed first, then XQuery (this is the way browsers do it because JavaScript is supported natively). There can be other models (e.g., execution
+in order of the script tags) in the future.</p>
+
+<h3>Hello World version of  XQiB(XQuery in the Browser.):</h3>
+
+<textarea class="b">
+<html><head>
+<title>Hello World Page</title>
+<script type="text/xquery">
+browser:alert("Hello, World!")
+</script>
+</head><body/></html>
+</textarea>
+
+
+
+<footer>
+<h2>References</h2>
+
+<cite>https://www.javatpoint.com/xquery-features</cite><br>
+<cite>https://datatypes.net/open-xq-files</cite><br>
+<cite>https://github.com/L2L2L/XQIB-XQuery-in-the-Browser-</cite><br>
+
+
+<br><br>
+</footer>
+
+</body>
+</html> 
