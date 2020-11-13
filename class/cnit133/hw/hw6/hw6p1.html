@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Regular Expression - 4 decimal places">
+<title>Assignment 6 part 1</title>
+    
+      <script>
+          
+         function calculate() {
+       
+            var errMsg = "Invalid number entered. Only number with 4 decimals are allowed. ";
+            var input = document.forms["myForm"].elements["input"].value;
+
+     //Create regular expression for correct zip-code format 
+     // a regular expression starts with / and ends with /
+     // for 1st half of string ^ means the string should begin with the following pattern
+     // (\d{5}) means 5 digits
+     // for 2nd half of string, - for the hyphen, followed by 4 digits as shown by \d{4}
+     // $ means the string should end, that is, no characters are valid after the 2nd 4 digits
+
+
+              xRegExp = /^(\d*)(.\d{4})$/;
+
+       // regular expression check - entered zip to be checked against xxxxx-xxxx format
+            
+            if ( ! xRegExp.test(input)) {
+
+            
+            document.getElementById("errOut").innerHTML = errMsg;
+            // Outputs 
+            document.forms["myForm"].elements["intg"].value = "";
+            document.forms["myForm"].elements["sqrt"].value = "";
+            document.forms["myForm"].elements["tenth"].value = "";
+            document.forms["myForm"].elements["hundth"].value = "";
+            document.forms["myForm"].elements["thousth"].value = "";
+            
+
+            } else  {  
+
+
+            // split zip main and zip extension
+            //var tokens = completeNumber.split( "." );
+           // var zipMain = tokens[ 0 ];
+           // var zipExt = tokens[ 1 ];
+
+            var intg = Math.round( input );
+            var sqrt = Math.floor(Math.sqrt( input ));
+			var tenth = Math.floor( input * 10 + .5 ) / 10;
+			var hundth= Math.floor( input * 100 + .5 ) / 100;
+ 			var thousth = Math.floor( input * 100 + .5 ) / 1000;
+
+            // clear any possible residual error message
+			document.getElementById("errOut").innerHTML = "";
+
+            // output nearest integer 
+            document.forms["myForm"].elements["intg"].value = intg;
+
+            // output zip sqrt 
+            document.forms["myForm"].elements["sqrt"].value = sqrt;
+
+            // nearest tenth 
+
+            document.forms["myForm"].elements["tenth"].value = tenth;
+
+            // nearest hundred 
+
+            document.forms["myForm"].elements["hundth"].value = hundth;
+
+            // nearest thousand
+            document.forms["myForm"].elements["thousth"].value = thousth;
+         
+                 }
+
+         }
+      
+      </script>
+
+ <style>
+
+      body {background-color: #808080; color: white;}
+      .body { width: 415px; margin: 0px auto;}
+
+      div {font-size: 18px; font-weight: bold; color:yellow;}
+
+	  table
+      {
+       border-collapse:collapse;
+      }
+      
+	  table, td
+      {
+       border:1px solid white;
+      }
+     </style>
+</head>
+
+<body onload="document.forms['myForm'].elements['input'].focus();">
+
+<section class="body">
+
+<h3>Regular Expressions</h3>
+
+<div id ="errOut"></div> <br>
+
+      <form name = "myForm">
+         <table>
+            <tr>
+               <td>
+               	<label for="inputx">Enter a number with exactly 4 decimal places</label>
+               </td>
+               
+               <td>
+                  <input name="input" id="inputx" type="text" size="10" autofocus>
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                  <input type="button" value="Outputs" onclick="calculate()">
+               </td>
+            </tr>
+            <tr>
+               <td><label for="integer">Nearest integer:</label></td>
+               <td>
+                  <input name="intg" id="integer" type="text" size="10" readonly>
+               </td>
+            </tr>
+           <tr>
+               <td><label for="sqroot">Square root:</label></td>   
+               <td>
+                   <input name="sqrt" id="sqroot" type="text" size= "10" readonly>
+               </td>               
+               
+            </tr>
+
+             <tr>
+               <td><label for="tenthnum">Nearest tenth:</label></td>
+               <td>
+                  <input name="tenth" id="tenthnum" type="text" size="10" readonly>
+               </td>
+            </tr>
+           <tr>
+               <td><label for="hundthnum">Nearest Hundred:</label></td>   
+               <td>
+                   <input name="hundth" id="hundthnum" type="text" size= "10" readonly>
+               </td>               
+               
+            </tr>
+
+            <tr>
+               <td><label for="thousthnum">Nearest thousand:</label></td>   
+               <td>
+                   <input name="thousth" id="thousthnum" type="text" size= "10" readonly>
+               </td>               
+               
+            </tr>
+
+         </table>
+         <input type="reset" value="Reset" onClick="window.location.reload();">
+      </form>
+</section>
+</body>
+</html>

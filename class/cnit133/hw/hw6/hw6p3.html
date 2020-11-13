@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Objects exercise - date and zip code">
+<title>Exercise 2A Objects</title>
+    
+<script>
+         
+         function parseNumber() {
+       
+            var errMsg="Phone number has wrong format - Please use (999)999-9999(no spaces)";     
+
+            var completeNumber = document.getElementById("input").value;
+
+            inputRegExp = /^(\(\d{3}\))(\d{3})(-\d{4})$/;
+            
+            // test to see if input is in valid format using a regular excpression
+      
+            if ( ! inputRegExp.test(completeNumber))
+
+                document.getElementById("errOut").innerHTML = errMsg;
+
+            else  {  
+
+                   // split zip main and zip extension
+                   var token1 = completeNumber.split(/[(,),-]/);
+                   var areaCode = token1[ 1 ];
+                   var firstThree = token1[ 2 ];
+                   var lastFour = token1[ 3 ];
+
+                  // output zip main code
+                   document.getElementById("areaCode").value = areaCode;
+
+                  // output zip extension
+                  document.getElementById("lastFour").value = lastFour;
+                  document.getElementById("firstThree").value = firstThree;
+
+                  //get firts 3 characters of zip main
+                  //area3 = areaCode.substr( 0, 3 );
+                  //document.getElementById("area3").value = area3;
+         
+                 }
+
+         }
+
+        function res() {   
+                       document.getElementById("errOut").innerHTML =""; 
+                       document.getElementById("input").focus();
+                       }
+</script>
+
+<style>
+
+body {background-color: #f5f5dc;}
+
+.body { width: 450px; margin: 0px auto;}
+      
+div {font-size: 18px; font-weight: bold; color:red;}
+table
+{
+border-collapse:collapse;
+}
+table, td
+{
+border:1px solid black;
+}
+
+</style>
+   
+</head>
+
+<body onload="document.getElementById('input').focus();">
+
+<section class="body">
+
+
+<div id ="errOut"></div> 
+<br>
+      <form name="myForm">
+         <table>
+            <tr>
+               <td>Enter a Phone number <br>
+                  [in the form (999)999-9999(no spaces)]
+               </td>
+               <td>
+                  <input id="input" type="text" size="15">
+               </td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                  <input type="button" value="Split" onclick="parseNumber()">
+               </td>
+            </tr>
+            <tr>
+               <td>Area Code:</td>
+               <td>
+                  <input id="areaCode" type="text" size="5">
+               </td>
+            </tr>
+           <tr>
+               <td>First three of phone numner:</td>   
+               <td>
+                   <input id="firstThree" type="text" size="4">
+               </td>
+           </tr>
+           <tr>
+               <td>Last four of phone number</td>
+                 <td>
+                   <input id="lastFour" type="text" size="4">
+                 </td>
+               
+            </tr>
+         </table>
+         <input type="reset" value="Reset" onClick="res();">
+      </form>
+</section>
+</body>
+</html>

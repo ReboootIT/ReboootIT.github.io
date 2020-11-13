@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Objects exercise - charAt()">
+<title>Object Exercise - charAt()</title>
+
+<script>
+
+         function search()
+         {
+            var count=0;
+            
+            var key=document.getElementById("key").value.toLowerCase().charAt( 0 );
+             var key=key.toLowerCase();
+
+            var stringToSearch= document.getElementById("mystring").value; 
+            var stringToSearch=stringToSearch.toLowerCase(); 
+  
+                        
+             for (i=0; i < stringToSearch.length; i++)
+                     {
+
+                    if (stringToSearch.charAt(i) == key)
+                             count++;     
+                     }         
+      
+            if ( count == 0 )
+               document.getElementById("output").value=key + " not found";
+            else
+               document.getElementById("output").value=count + 
+                  " occurrence(s) of " + key + " found";
+         }
+</script>
+
+<style>
+      body {background-color: #808080; color: white;}
+      .body { width: 505px; margin: 0px auto;}
+</style>
+
+</head>
+
+<body onload="document.getElementById('key').focus();">
+
+<section class="body">
+        
+
+      <form name="myForm">
+      	
+      	<p>
+      	Give me something to search from
+      	<input id="mystring" type="text" size="15">
+    	
+      	<br><br>
+         Enter a character to search for
+            <input id="key" type="text" size="5">
+            <br>
+            <input type="button" value="Search" onclick="search();">
+             <input type="reset" value="Reset" onClick="location.reload();">
+
+         <br><br>
+         
+             Occurrences of searched character:
+             <br>
+            <textarea cols="30" rows="1" id="output"></textarea>
+         </p>
+      </form>
+</section>
+</body>
+</html>
