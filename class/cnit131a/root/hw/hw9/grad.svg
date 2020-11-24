@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+      <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="250px" height="250px">
+      
+         <defs>
+            <linearGradient id="mygradient">
+               <stop offset="0%" stop-color="#FF0000" />
+               <stop offset="100%" stop-color="#00FFF00" />
+            </linearGradient>
+         </defs>
+        
+   
+            <rect x="20" y="40" width="200px" height="200px" stroke="green" stroke-width="3" 
+             fill="url(#mygradient)"/>
+         
+      </svg>
