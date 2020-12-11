@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JSON Array - HW 10</title>
+<style> 
+
+#demo1,#demo2 {
+  color: rgb(0,0,255);
+}
+
+h1{
+text-align: center;
+}
+
+</style>
+</head> 
+<body>
+
+<h1>Homework 10</h1>
+
+<p>To answer the question I am using jsonarray.html from JSON folder. Concept is the same except I am injected a value in paragraph instead of table.
+</p>	
+
+<p>
+When creating a tablecell injecting the value friends[0].name in first cell and friends[0].profession as sales rep in second cell. Similar to Array in JSON first set of data is postioned at position zero or [0] 
+
+
+<h2>Here is the result of my script</h2>
+
+<p>Here is the friend name value located at zero position in array or object</p>
+<p id="demo1"></p>
+<p>Here is the  friend profession value located at zero position in array or object</p>
+<p id="demo2"></p>
+
+
+<a href="hw10.json">Link to my JSON file</a>
+
+
+
+
+<script>
+var friends, x, y;
+var friends = [{
+     "name": "John",
+     "age": "28",
+     "gender": "male",
+     "profession": "sales rep"
+},
+{
+     "name": "Maryenne",
+     "age": "26",
+     "gender": "female",
+     "profession": "web developer"
+}];
+x = friends[0].name;
+y = friends[0].profession ;
+
+document.getElementById("demo1").innerHTML = x;
+document.getElementById("demo2").innerHTML = y;
+</script>
+
+</body>
+</html>
