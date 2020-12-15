@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="pulldown menus using onMouseover event handler.">
+		<title>Hw7 - Part 2</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<style>
+nav {background:#FFF; float:left;}
+nav ul {text-align:center;}
+nav ul li {float:left; display:inline; }
+nav ul li:hover {background:#E6E6E6; list-style-type: none;}
+nav ul li a {display:block; padding:15px 15px; color:#444; text-decoration:none; }
+nav ul li ul {position:absolute; width:100px; background:#444;}
+nav ul li ul li {width:120px; list-style-type: none; }
+nav ul li ul li a {display:block; padding:10px 10px; color:#FFF; list-style-type: none;}
+nav ul li ul.fallback {display:none; list-style-type: none;}
+nav ul li:hover ul.fallback {display:block; list-style-type: none;}
+</style>
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<script>
+			$(document).ready(function(){
+			$('nav li ul').hide().removeClass('fallback');
+			$('nav li').hover(
+			  function () {
+			    $('ul', this).stop().slideDown(200);
+			  },
+			  function () {
+			    $('ul', this).stop().slideUp(200);
+			  }
+			);
+			});
+		</script>
+
+	</head>
+
+	<body>
+<nav>
+  <ul>
+   
+    <li>
+      <a href="index.html">Main Page</a>
+    </li>
+    
+     <li>
+      <a href="./hw/hw2.html">Homework 2</a>
+      <ul class="fallback">
+        <li><a href="./hw/hw2/p1.html">HW2 Part 1</a></li>
+        <li><a href="./hw/hw2/p2.html">HW2 Part 2</a></li>
+        <li><a href="./hw/hw2/p3.html">HW2 Part 3</a></li>
+      </ul>
+    </li>
+    
+        <li>
+      <a href="./hw/hw3.html">Homework 3</a>
+      <ul class="fallback">
+        <li><a href="./hw/hw3/h3p1.html">HW3 Part 1</a></li>
+        <li><a href="./hw/hw3/h3p2.html">HW3 Part 2</a></li>
+        <li><a href="./hw/hw3/h3p3.html">HW3 Part 3</a></li>
+        <li><a href="./hw/hw3/h3p4.html">HW3 Part 4</a></li>
+      </ul>
+    </li>
+    
+        <li>
+      <a href="./hw/hw4.html">Homework 4</a>
+      <ul class="fallback">
+        <li><a href="./hw/hw4/h4p1.html">HW4 Part 1</a></li>
+        <li><a href="./hw/hw4/h4p2.html">HW4 Part 2</a></li>
+      </ul>
+    </li>
+    
+        <li>
+      <a href="./hw/hw5.html">Homework 5</a>
+      <ul class="fallback">
+        <li><a href="./hw/hw5/h5p1.html">HW5 Part 1</a></li>
+        <li><a href="./hw/hw5/h5p2.html">HW5 Part 2</a></li>
+        <li><a href="./hw/hw5/h5p3.html">HW5 Part 3</a></li>
+      </ul>
+    </li>
+    
+        <li>
+      <a href="./hw/hw6.html">Homework 6</a>
+      <ul class="fallback">
+        <li><a href="./hw/hw6/h6p1.html">HW6 Part 1</a></li>
+        <li><a href="./hw/hw6/h6p2.html">HW6 Part 2</a></li>
+        <li><a href="./hw/hw6/h6p3.html">HW6 Part 3</a></li>
+      </ul>
+    </li>
+    
+
+  <li>
+      <a href="hw7.html">Homework 7</a>
+      <ul class="fallback">
+        <li><a href="hw7p1.html">Part 1</a></li>
+        <li><a href="hw7p1.html">Part 2(Loop back to this page)</a></li>
+        
+      </ul>
+    </li>
+
+ <li>
+  <a href="https://hills.ccsf.edu/~akhan4/prj8.html">Homework 8</a>
+      
+ </li>
+
+
+  </ul>
+</nav>
+	</body>
+</html>

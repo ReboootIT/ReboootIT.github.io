@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="CNIT 133 Hw7 - Part1 ">
+<title>Using jQuery for CSS</title>
+
+<style>
+        /* Define three CSS classes corresponding to "themes" */
+        .theme1 {
+            font-family: "Arizonia", cursive;
+            background-color: darkred;
+            font-size: .8em;
+        }
+
+        .theme2 {
+            font-family: "Almendra Display", cursive;
+            background-color: royalblue;
+            font-size: .9em;
+        }
+
+        .theme3 {
+            font-family: "Clicker Script", cursive;
+            background-color: pink;
+            font-size: .85em;
+        }
+
+        /* The following CSS is just for basic layout and appearance */
+        #sampleText {
+            margin: 10px 30px;
+            padding: 0 10px;
+            border: 3px ridge gray;
+        }
+
+        #themeForm, #attributeForm {
+            float: left;
+            margin-left: 30px;
+        }
+
+        input[type='radio'] {
+            margin: 0 5px 0 0;
+        }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+        }
+
+        table {
+            background-color: whitesmoke;
+        }
+
+        th {
+            color: white;
+            background-color: darkslategray;
+            text-align: left;
+        }
+
+        button {
+            margin-top: 10px;
+            font-size: .8em;
+        }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+        // Define a document ready handler
+        $(function () {
+            // Attach a click event handler to all the radio buttons in the attribute selection table
+            $("#attributeTable :radio").click(function () {
+                // The "this" variable refers to the radio button that was clicked.
+                // The HTML code defines the name attribute of the radio button as the name of the CSS property
+                // we want to set; the value of the radio button is the value we want to set the CSS property to.
+                // By doing this, the CSS of the sample text can be set easily with the following line of code:
+                $("#sampleText").css($(this).attr("name"), $(this).val());
+            });
+
+            // Attach a click event handler to the font size selection box
+            $("#fontSize").change(function () {
+                $("#sampleText").css($(this).attr("name"), $(this).val());
+            });
+
+            // Attach a click event handler to the checkboxes in the attribute selection table
+            $("#attributeTable :checkbox").change(function () {
+                $("#sampleText").css($(this).attr("name"), this.checked ? $(this).val() : "");
+            });
+
+            // Attach a click event handler to the radio buttons in the theme selection table
+            $("#themeTable :radio").click(function () {
+                // Clear specific CSS attributes that may have been set with the radio buttons in the attribute table
+                // by selecting all the one that have the checked attribute, and firing the click event
+                $("#attributeTable [checked]").click();
+
+                // Reset the select box by setting the value to ""
+                $("#fontSize").val("");
+
+                // Remove any class already set, and set the class to the one selected.
+                $("#sampleText").removeClass().addClass($(this).val());
+            });
+
+            // Attach a click event handler to the Reset All button
+            $("#resetAll").click(function () {
+                $("#themeTable [checked]").click(); // Clicks theme table elements that have a checked attribute
+                $("#attributeTable [checked]").click(); // Clicks attribute table elements that have a checked attribute
+                $("#fontSize").val(""); // Selects the font-size that has a value of ""
+                $("#attributeTable :checked").click(); // Clicks all the checkboxes that are checked (to uncheck them)
+            });
+        });
+</script>
+</head>
+
+<body>
+<h1>Assignment 7 - Part1</h1>
+
+<form id="themeForm">
+    <h3>CSS class</h3>
+    <table id="themeTable" border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Theme</th>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="radio" name="theme" value="theme1" id="theme1">Theme 1 (Arizonia, darkred,
+                    80%)</label><br>
+                <label><input type="radio" name="theme" value="theme2" id="theme2">Theme 2 (Almendra Display, RoyalBlue,
+                    90%)</label><br>
+                <label><input type="radio" name="theme" value="theme3" id="theme3">Theme 3 Clicker Script, Pink,
+                    85%)</label><br>
+                <label><input type="radio" name="theme" value="" id="none" checked>None</label><br>
+            </td>
+        </tr>
+    </table>
+    <button type="button" id="resetAll">Reset All</button>
+</form>
+
+<form id="attributeForm">
+    <h3>CSS attribute (overrides theme)</h3>
+    <table id="attributeTable" border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Font Family</th>
+            <th>Background Color</th>
+            <th>Font Size</th>
+            <th>Letters and Words</th>
+        </tr>
+        <tr>
+            <td>
+                <label><input type="radio" name="font-family" value='"Comic Sans MS", cursive, sans-serif'
+                              id="comicSans">Comic Sans MS</label><br>
+                <label><input type="radio" name="font-family" value="Tahoma, Geneva, sans-serif"
+                              id="tahoma">Tahoma</label><br>
+                <label><input type="radio" name="font-family" value='"Trebuchet MS", Helvetica, sans-serif'
+                              id="trebuchet">Trebuchet MS</label><br>
+                <label><input type="radio" name="font-family" value="Verdana, Geneva, sans-serif"
+                              id="verdana">Verdana</label><br>
+                <label><input type="radio" name="font-family" value=""
+                              id="fontFamilyDefault" checked>Default</label>
+            </td>
+            <td>
+                <label><input type="radio" name="background-color" value="Azure"
+                              id="azure">Azure</label><br>
+                <label><input type="radio" name="background-color" value="Honeydew"
+                              id="honeydew">Honeydew</label><br>
+                <label><input type="radio" name="background-color" value="Ivory"
+                              id="ivory">Ivory</label><br>
+                <label><input type="radio" name="background-color" value="Lavender"
+                              id="lavender">Lavender</label><br>
+                <label><input type="radio" name="background-color" value=""
+                              id="bgColorDefault" checked>Default</label>
+            </td>
+            <td>
+                <label for="fontSize">Select one:</label><br>
+                <select name="font-size" size="5" id="fontSize">
+                    <option value="80%">80%</option>
+                    <option value="90%">90%</option>
+                    <option value="100%">100%</option>
+                    <option value="110%">110%</option>
+                    <option value="" selected>Default</option>
+                </select>
+            </td>
+            <td>
+                <label><input type="checkbox" name="font-weight" value="bold" id="boldCheck">bold</label><br>
+                <label><input type="checkbox" name="font-style" value="italic" id="italicCheck">italic</label><br>
+                <label><input type="checkbox" name="font-variant" value="small-caps"
+                              id="smallCapsCheck">small-caps</label><br>
+                <label><input type="checkbox" name="text-decoration" value="underline"
+                              id="underlineCheck">underline</label><br>
+                <label><input type="checkbox" name="letter-spacing" value="-1px" id="tight">tight</label>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<br style="clear: both">
+
+<div id="sampleText">
+    <h2>The Gettysburg Address</h2>
+
+    <p>Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty,
+        and dedicated to the proposition that all men are created equal.</p>
+
+    <p>Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so
+        dedicated, can long endure. We are met on a great battlefield of that war. We have come to dedicate a portion of
+        that field, as a final resting place for those who here gave their lives that that nation might live. It is
+        altogether fitting and proper that we should do this.</p>
+
+    <p>But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow this ground. The brave men,
+        living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world
+        will little note, nor long remember what we say here, but it can never forget what they did here. It is for us
+        the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so
+        nobly advanced. It is rather for us to be here dedicated to the great task remaining before us that from these
+        honored dead we take increased devotion to that cause for which they gave the last full measure of devotion that
+        we here highly resolve that these dead shall not have died in vain that this nation, under God, shall have a new
+        birth of freedom and that government of the people, by the people, for the people, shall not perish from the
+        earth.</p>
+</div>
+</body>
+</html>
